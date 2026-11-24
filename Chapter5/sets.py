@@ -33,4 +33,4 @@
 
 d = {}
 v = input("enter the fav lang of a:")
-d.
+
