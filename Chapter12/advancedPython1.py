@@ -27,10 +27,46 @@
 #             print("Unknown Status Code")
 
 # httpStatus(200)
-while True:
-    try:
-        num = int(input("Enter a number: "))
-    except ValueError:
-        print("Invalid input. Please enter a valid integer.")
-    else:
-        break
+
+
+# while True:
+#     try:
+#         num = int(input("Enter a number: "))
+#     except ValueError:
+#         print("Invalid input. Please enter a valid integer.")
+#     else:
+#         break
+
+# a = 30
+
+# def myFunction():
+#     global a
+#     a = 20
+#     print("Inside function:", a)
+
+# print("Outside function:", a)
+# myFunction()
+# print("Outside function:", a)
+
+
+
+l = ["hello" , "apple" , "world" , "cat"]
+
+# index = 0
+# for item in l:
+#     print(f"at {index} index the element is {item}")
+#     index += 1
+
+# for i , item ,f in enumerate(l): 
+#     print(f"at {i} index the element is {item}")
+
+squaredList = [(i + i +i+i+i) for i in l ]
+# for i in l:
+#     squaredList.append(i + i +i+i+i)
+
+for i,item in enumerate(squaredList):
+    if(i==1 or i==2):
+        print(item)
+    
+
+# print(squaredList)
