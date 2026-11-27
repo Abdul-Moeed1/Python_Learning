@@ -8,6 +8,6 @@ def main() -> None:
 
 app = FastAPI()
 
-app.get("/")
+@app.get("/")
 async def root():
     return {"message" : "Goodbye World!!!"}
