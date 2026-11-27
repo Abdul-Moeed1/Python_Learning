@@ -35,7 +35,8 @@ def processCommand(c):
             for article in articles:
                 speak(article)
     else:
-        speak("Sorry can't help you with this.")
+        # Let OpenAI handle the request .
+        pass
         
 if __name__ == "__main__":
     speak("Initializing Jarvis...")
