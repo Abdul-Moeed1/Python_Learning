@@ -5,6 +5,7 @@ import webbrowser
 import os
 from dotenv import load_dotenv
 import requests
+from openai import OpenAI
 
 # Loads variables from .env into the system environment
 load_dotenv()
@@ -13,6 +14,12 @@ recognizer = sr.Recognizer()
 recognizer.dynamic_energy_threshold = True
 engine = pyttsx3.init()
 newsApiKey = os.getenv("NEWS_API_KEY")
+groqApiKey = os.getenv("GROQ_API_KEY")
+
+client = OpenAI(
+    api_key=groqApiKey,
+    base_url="https://api.groq.com/openai/v1"
+)
 
 def speak(text):
     engine.say(text)
@@ -36,7 +43,18 @@ def processCommand(c):
                 speak(article)
     else:
         # Let OpenAI handle the request .
-        pass
+        generateAIResponse(c)
+
+def generateAIResponse(c):
+    response = client.chat.completions.create(
+    model="openai/gpt-oss-20b",
+    max_tokens=150,  # Hard limit on output tokens
+    messages=[
+        {"role": "system", "content": "Reply in 1 or 2 short sentences only."},
+        {"role": "user", "content": c}
+    ]
+    )
+    speak(response.choices[0].message.content)
         
 if __name__ == "__main__":
     speak("Initializing Jarvis...")
